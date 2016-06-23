@@ -1,0 +1,30 @@
+{
+  "name": "setbased/php-code-store",
+  "description": "Abstract helper class for indenting automatically generated code",
+  "keywords": [
+    "code",
+    "generation"
+  ],
+  "type": "library",
+  "license": "MIT",
+  "require-dev": {
+    "phpunit/phpunit": "*",
+    "setbased/phing-extensions": "2.*"
+  },
+  "require": {
+    "php": ">=5.4.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "SetBased\\Helper\\CodeStore\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "SetBased\\Helper\\CodeStore\\Test\\": "test/"
+    }
+  },
+  "config": {
+    "bin-dir": "bin"
+  }
+}
