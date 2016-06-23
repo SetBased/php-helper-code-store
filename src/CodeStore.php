@@ -164,9 +164,8 @@ abstract class CodeStore
   /**
    * Returns the indentation mode based on a line of code.
    *
-   * The indentation mode must be one of:
+   * The indentation mode can be any combination of the following flags (combined with the | bitwise operator).
    * <ul>
-   * <li> self::C_INDENT_NO_CHANGE: No change of indentation.
    * <li> self::C_INDENT_INCREMENT_BEFORE: The indentation must be incremented before appending the line of code.
    * <li> self::C_INDENT_INCREMENT_AFTER: The indentation must be incremented after appending the line of code.
    * <li> self::C_INDENT_DECREMENT_BEFORE: The indentation must be decremented before appending the line of code.
