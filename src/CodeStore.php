@@ -48,6 +48,8 @@ abstract class CodeStore
    * Object constructor.
    *
    * @param int $indentation The number of spaces per indentation level.
+   *
+   * @api
    */
   public function __construct($indentation = 2)
   {
@@ -63,6 +65,8 @@ abstract class CodeStore
    * @param bool                 $trim If true the line or lines of code will be trimmed before appending.
    *
    * @throws \InvalidArgumentException
+   *
+   * @api
    */
   public function append($line, $trim = true)
   {
@@ -90,6 +94,8 @@ abstract class CodeStore
    * Appends a part of code to the last line of code.
    *
    * @param string $part The part of code to be to the last line.
+   *
+   * @api
    */
   public function appendToLastLine($part)
   {
@@ -99,6 +105,8 @@ abstract class CodeStore
   //--------------------------------------------------------------------------------------------------------------------
   /**
    * Removes all code from this code store.
+   *
+   * @api
    */
   public function clear()
   {
@@ -108,6 +116,8 @@ abstract class CodeStore
   //--------------------------------------------------------------------------------------------------------------------
   /**
    * Returns the generated code as a single string.
+   *
+   * @api
    */
   public function getCode()
   {
@@ -166,6 +176,8 @@ abstract class CodeStore
    * @param string $line The line of code.
    *
    * @return int
+   *
+   * @api
    */
   abstract protected function indentationMode($line);
 
