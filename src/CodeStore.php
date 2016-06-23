@@ -118,7 +118,7 @@ abstract class CodeStore
     {
       $mode = $this->indentationMode($line);
 
-      # Increment or decrement indentation level.
+      // Increment or decrement indentation level.
       if ($mode & self::C_INDENT_INCREMENT_BEFORE)
       {
         $indentLevel++;
@@ -128,10 +128,10 @@ abstract class CodeStore
         $indentLevel = max(0, $indentLevel - 1);
       }
 
-      # Append the line with indentation.
+      // Append the line with indentation.
       $lines[] = $this->addIndentation($line, $indentLevel);
 
-      # Increment or decrement indentation level.
+      // Increment or decrement indentation level.
       if ($mode & self::C_INDENT_INCREMENT_AFTER)
       {
         $indentLevel++;
