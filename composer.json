@@ -1,5 +1,5 @@
 {
-  "name": "setbased/php-code-store",
+  "name": "setbased/helper-code-store",
   "description": "Abstract helper class for indenting automatically generated code",
   "keywords": [
     "code",

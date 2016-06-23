@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="php-code-store" default="build"  basedir=".">
+<project name="php-helper-code-store" default="build"  basedir=".">
     <taskdef name="ReadSemanticVersion" classname="vendor.setbased.phing-extensions.src.Task.ReadSemanticVersionTask"/>
     <property name="VERSION" value="0.0.0"/> <!-- Keep our IDE happy -->
 
