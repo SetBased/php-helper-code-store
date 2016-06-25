@@ -42,6 +42,16 @@ abstract class CodeStore
   const C_INDENT_DECREMENT_AFTER = 8;
 
   /**
+   * String for separating parts of the generated code. In most cases a comment with one character repeated many times.
+   *
+   * @var string
+   *
+   * @since 1.0.0
+   * @api
+   */
+  protected $separator;
+
+  /**
    * The number of spaces per indentation level.
    *
    * @var int
@@ -55,19 +65,28 @@ abstract class CodeStore
    */
   private $lines;
 
+  /**
+   * The maximum width of the generated code (in chars).
+   *
+   * @var int
+   */
+  private $width;
+
   //--------------------------------------------------------------------------------------------------------------------
   /**
    * Object constructor.
    *
    * @param int $indentation The number of spaces per indentation level.
+   * @param int $width       The maximum width of the generated code (in chars).
    *
    * @since 1.0.0
    * @api
    */
-  public function __construct($indentation = 2)
+  public function __construct($indentation = 2, $width = 120)
   {
     $this->indentation = $indentation;
     $this->lines       = [];
+    $this->width       = $width;
   }
 
   //--------------------------------------------------------------------------------------------------------------------
@@ -101,6 +120,18 @@ abstract class CodeStore
       default:
         throw new \InvalidArgumentException('Not a string nor an array.');
     }
+  }
+
+  //--------------------------------------------------------------------------------------------------------------------
+  /**
+   * Appends the separator to the generated code.
+   *
+   * @since 1.0.0
+   * @api
+   */
+  public function appendSeparator()
+  {
+    $this->append($this->separator, false);
   }
 
   //--------------------------------------------------------------------------------------------------------------------
@@ -155,6 +186,12 @@ abstract class CodeStore
         $indentLevel = max(0, $indentLevel - 1);
       }
 
+      // If the line is a separator shorten the separator.
+      if ($this->separator!==null && $line==$this->separator)
+      {
+        $line = $this->shortenSeparator($this->width - $this->indentation * $indentLevel);
+      }
+
       // Append the line with indentation.
       $lines[] = $this->addIndentation($line, $indentLevel);
 
@@ -175,6 +212,20 @@ abstract class CodeStore
     }
 
     return implode(PHP_EOL, $lines).PHP_EOL;
+  }
+
+  //--------------------------------------------------------------------------------------------------------------------
+  /**
+   * Returns the code as an array of strings (without indentation).
+   *
+   * @return string[]
+   *
+   * @since 1.0.0
+   * @api
+   */
+  public function getLines()
+  {
+    return $this->lines;
   }
 
   //--------------------------------------------------------------------------------------------------------------------
@@ -200,6 +251,19 @@ abstract class CodeStore
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
+   * Returns the separator to a required length.
+   *
+   * @param int $length The required length of the separator.
+   *
+   * @return string
+   */
+  protected function shortenSeparator($length)
+  {
+    return substr($this->separator, 0, $length);
+  }
+
+  //--------------------------------------------------------------------------------------------------------------------
+  /**
    * Returns a line of code with the proper amount of indentationMode.
    *
    * @param string $line        The line of code.
@@ -209,7 +273,7 @@ abstract class CodeStore
    */
   private function addIndentation($line, $indentLevel)
   {
-    return str_repeat(' ', $this->indentation * $indentLevel).$line;
+    return ($line==='') ? '' : str_repeat(' ', $this->indentation * $indentLevel).$line;
   }
 
   //--------------------------------------------------------------------------------------------------------------------
