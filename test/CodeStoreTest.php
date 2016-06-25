@@ -104,7 +104,7 @@ EOL;
 
     $expected = ['begin', 'statement', 'statement', 'end'];
 
-    $code = $store->getLines();
+    $code = $store->getRawCode();
     $this->assertEquals($expected, $code);
   }
 

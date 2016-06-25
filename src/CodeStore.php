@@ -162,7 +162,7 @@ abstract class CodeStore
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
-   * Returns the generated code as a single string.
+   * Returns the generated code properly indented as a single string.
    *
    * @since 1.0.0
    * @api
@@ -216,14 +216,14 @@ abstract class CodeStore
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
-   * Returns the code as an array of strings (without indentation).
+   * Returns the raw code without indentation as an array of strings.
    *
    * @return string[]
    *
    * @since 1.0.0
    * @api
    */
-  public function getLines()
+  public function getRawCode()
   {
     return $this->lines;
   }
