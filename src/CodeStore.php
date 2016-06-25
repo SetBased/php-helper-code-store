@@ -11,21 +11,33 @@ abstract class CodeStore
   //--------------------------------------------------------------------------------------------------------------------
   /**
    * Increment indentation before appending the line.
+   *
+   * @since 1.0.0
+   * @api
    */
   const C_INDENT_INCREMENT_BEFORE = 1;
 
   /**
    * Increment indentation after appending the line.
+   *
+   * @since 1.0.0
+   * @api
    */
   const C_INDENT_INCREMENT_AFTER = 2;
 
   /**
    * Decrement indentation before appending the line.
+   *
+   * @since 1.0.0
+   * @api
    */
   const C_INDENT_DECREMENT_BEFORE = 4;
 
   /**
    * Decrement indentation after appending the line.
+   *
+   * @since 1.0.0
+   * @api
    */
   const C_INDENT_DECREMENT_AFTER = 8;
 
@@ -49,6 +61,7 @@ abstract class CodeStore
    *
    * @param int $indentation The number of spaces per indentation level.
    *
+   * @since 1.0.0
    * @api
    */
   public function __construct($indentation = 2)
@@ -66,6 +79,7 @@ abstract class CodeStore
    *
    * @throws \InvalidArgumentException
    *
+   * @since 1.0.0
    * @api
    */
   public function append($line, $trim = true)
@@ -95,6 +109,7 @@ abstract class CodeStore
    *
    * @param string $part The part of code to be to the last line.
    *
+   * @since 1.0.0
    * @api
    */
   public function appendToLastLine($part)
@@ -106,6 +121,7 @@ abstract class CodeStore
   /**
    * Removes all code from this code store.
    *
+   * @since 1.0.0
    * @api
    */
   public function clear()
@@ -117,6 +133,7 @@ abstract class CodeStore
   /**
    * Returns the generated code as a single string.
    *
+   * @since 1.0.0
    * @api
    */
   public function getCode()
@@ -176,6 +193,7 @@ abstract class CodeStore
    *
    * @return int
    *
+   * @since 1.0.0
    * @api
    */
   abstract protected function indentationMode($line);
