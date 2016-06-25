@@ -91,6 +91,25 @@ EOL;
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
+   * Test for get raw code.
+   */
+  public function testGetLines()
+  {
+    $store = new ConcreteCodeStore();
+
+    $store->append('begin');
+    $store->append('statement');
+    $store->append('statement');
+    $store->append('end');
+
+    $expected = ['begin', 'statement', 'statement', 'end'];
+
+    $code = $store->getLines();
+    $this->assertEquals($expected, $code);
+  }
+
+  //--------------------------------------------------------------------------------------------------------------------
+  /**
    * Test indentation levels and null values with array.
    */
   public function testIndentationLevels1()
@@ -208,6 +227,37 @@ EOL;
     }
     $code = $store->getCode();
 
+    $this->assertEquals($expected, $code);
+  }
+
+  //--------------------------------------------------------------------------------------------------------------------
+  /**
+   * Test for separator.
+   */
+  public function testSeparator()
+  {
+    $store = new ConcreteCodeStore();
+
+    $store->appendSeparator();
+    $store->append('begin');
+    $store->append('statement');
+    $store->appendSeparator();
+    $store->append('statement');
+    $store->append('end');
+    $store->appendSeparator();
+
+    $expected = <<< EOL
+#--------------
+begin
+  statement
+  #------------
+  statement
+end
+#--------------
+
+EOL;
+
+    $code = $store->getCode();
     $this->assertEquals($expected, $code);
   }
 

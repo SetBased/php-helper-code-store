@@ -11,6 +11,17 @@ class ConcreteCodeStore extends CodeStore
   /**
    * {@inheritdoc}
    */
+  public function __construct($indentation=2, $width=15)
+  {
+    parent::__construct($indentation, $width);
+    
+    $this->separator = '#'.str_repeat('-', $width - 1);
+  }
+  
+  //--------------------------------------------------------------------------------------------------------------------
+  /**
+   * {@inheritdoc}
+   */
   protected function indentationMode($line)
   {
     switch (trim($line))
