@@ -287,6 +287,32 @@ EOL;
   }
 
   //--------------------------------------------------------------------------------------------------------------------
+  /**
+   * Test getLastLine.
+   */
+  public function testGetLastLine1()
+  {
+    $store = new ConcreteCodeStore();
+    $store->append('begin');
+    $store->append('statement1');
+    $store->append('statement2');
+
+    $this->assertEquals('statement2', $store->getLastLine());
+  }
+
+  //--------------------------------------------------------------------------------------------------------------------
+  /**
+   * Test getLastLine with empty code store.
+   *
+   * @expectedException \LogicException
+   */
+  public function testGetLastLine2()
+  {
+    $store = new ConcreteCodeStore();
+    $store->getLastLine();
+  }
+
+  //--------------------------------------------------------------------------------------------------------------------
 }
 
 //----------------------------------------------------------------------------------------------------------------------

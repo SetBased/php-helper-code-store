@@ -216,6 +216,25 @@ abstract class CodeStore
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
+   * Returns the last line of code (without indentation applied).
+   *
+   * @return string
+   *
+   * @since 1.1.0
+   * @api
+   */
+  public function getLastLine()
+  {
+    if (empty($this->lines))
+    {
+      throw new \LogicException('No code in code store');
+    }
+
+    return $this->lines[count($this->lines) - 1];
+  }
+
+  //--------------------------------------------------------------------------------------------------------------------
+  /**
    * Returns the raw code without indentation as an array of strings.
    *
    * @return string[]
