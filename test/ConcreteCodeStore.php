@@ -4,7 +4,9 @@ namespace SetBased\Helper\CodeStore\Test;
 
 use SetBased\Helper\CodeStore\CodeStore;
 
-//----------------------------------------------------------------------------------------------------------------------
+/**
+ * A concrete implementation of class CodeStore.
+ */
 class ConcreteCodeStore extends CodeStore
 {
   //--------------------------------------------------------------------------------------------------------------------
