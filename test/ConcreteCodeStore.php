@@ -1,5 +1,5 @@
 <?php
-//----------------------------------------------------------------------------------------------------------------------
+
 namespace SetBased\Helper\CodeStore\Test;
 
 use SetBased\Helper\CodeStore\CodeStore;
@@ -13,7 +13,7 @@ class ConcreteCodeStore extends CodeStore
   /**
    * {@inheritdoc}
    */
-  public function __construct($indentation=2, $width=15)
+  public function __construct(int $indentation=2, int $width=15)
   {
     parent::__construct($indentation, $width);
     
@@ -24,7 +24,7 @@ class ConcreteCodeStore extends CodeStore
   /**
    * {@inheritdoc}
    */
-  protected function indentationMode($line)
+  protected function indentationMode(string $line): int
   {
     switch (trim($line))
     {

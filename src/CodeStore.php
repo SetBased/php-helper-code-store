@@ -1,8 +1,7 @@
 <?php
-//----------------------------------------------------------------------------------------------------------------------
+
 namespace SetBased\Helper\CodeStore;
 
-//----------------------------------------------------------------------------------------------------------------------
 /**
  * An abstract helper class for automatically generating code.
  */
@@ -82,7 +81,7 @@ abstract class CodeStore
    * @since 1.0.0
    * @api
    */
-  public function __construct($indentation = 2, $width = 120)
+  public function __construct(int $indentation = 2, int $width = 120)
   {
     $this->indentation = $indentation;
     $this->lines       = [];
@@ -101,7 +100,7 @@ abstract class CodeStore
    * @since 1.0.0
    * @api
    */
-  public function append($line, $trim = true)
+  public function append($line, bool $trim = true): void
   {
     switch (true)
     {
@@ -129,7 +128,7 @@ abstract class CodeStore
    * @since 1.0.0
    * @api
    */
-  public function appendSeparator()
+  public function appendSeparator(): void
   {
     $this->append($this->separator, false);
   }
@@ -143,7 +142,7 @@ abstract class CodeStore
    * @since 1.0.0
    * @api
    */
-  public function appendToLastLine($part)
+  public function appendToLastLine(string $part): void
   {
     $this->lines[count($this->lines) - 1] .= $part;
   }
@@ -155,7 +154,7 @@ abstract class CodeStore
    * @since 1.0.0
    * @api
    */
-  public function clear()
+  public function clear(): void
   {
     $this->lines = [];
   }
@@ -164,10 +163,12 @@ abstract class CodeStore
   /**
    * Returns the generated code properly indented as a single string.
    *
+   * @return string
+   *
    * @since 1.0.0
    * @api
    */
-  public function getCode()
+  public function getCode(): string
   {
     $lines       = [];
     $indentLevel = 0;
@@ -223,7 +224,7 @@ abstract class CodeStore
    * @since 1.1.0
    * @api
    */
-  public function getLastLine()
+  public function getLastLine(): string
   {
     if (empty($this->lines))
     {
@@ -242,7 +243,7 @@ abstract class CodeStore
    * @since 1.0.0
    * @api
    */
-  public function getRawCode()
+  public function getRawCode(): array
   {
     return $this->lines;
   }
@@ -266,7 +267,7 @@ abstract class CodeStore
    * @since 1.0.0
    * @api
    */
-  abstract protected function indentationMode($line);
+  abstract protected function indentationMode(string $line): int;
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
@@ -276,7 +277,7 @@ abstract class CodeStore
    *
    * @return string
    */
-  protected function shortenSeparator($length)
+  protected function shortenSeparator(int $length): string
   {
     return substr($this->separator, 0, $length);
   }
@@ -290,7 +291,7 @@ abstract class CodeStore
    *
    * @return string The indented line of code.
    */
-  private function addIndentation($line, $indentLevel)
+  private function addIndentation(string $line, int $indentLevel): string
   {
     return ($line==='') ? '' : str_repeat(' ', $this->indentation * $indentLevel).$line;
   }
@@ -302,7 +303,7 @@ abstract class CodeStore
    * @param null|string $line The line of code to append. If null the line will be ignored.
    * @param bool        $trim If true the line of code will be trimmed before appending.
    */
-  private function appendLine($line, $trim)
+  private function appendLine(?string $line, bool $trim): void
   {
     if ($line===null) return;
 
@@ -318,7 +319,7 @@ abstract class CodeStore
    * @param string[] $lines The lines of code to append.
    * @param bool     $trim  If true the lines of code will be trimmed before appending.
    */
-  private function appendLines($lines, $trim)
+  private function appendLines(array $lines, bool $trim): void
   {
     foreach ($lines as $line)
     {
