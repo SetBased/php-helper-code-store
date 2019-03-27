@@ -34,6 +34,14 @@ abstract class CodeStore
   const C_INDENT_DECREMENT_BEFORE = 4;
 
   /**
+   * Decrement indentation twice before appending the line.
+   *
+   * @since 2.1.0
+   * @api
+   */
+  const C_INDENT_DECREMENT_BEFORE_DOUBLE = 16;
+
+  /**
    * Decrement indentation after appending the line.
    *
    * @since 1.0.0
@@ -186,6 +194,10 @@ abstract class CodeStore
       if ($mode & self::C_INDENT_DECREMENT_BEFORE)
       {
         $indentLevel = max(0, $indentLevel - 1);
+      }
+      if ($mode & self::C_INDENT_DECREMENT_BEFORE_DOUBLE)
+      {
+        $indentLevel = max(0, $indentLevel - 2);
       }
 
       // If the line is a separator shorten the separator.

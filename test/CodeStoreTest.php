@@ -138,6 +138,10 @@ EOL;
               'statement',
               'statement',
               'end',
+              'begin',
+              'begin',
+              'statement',
+              'end-end',
               'END',
               'statement'];
 
@@ -160,6 +164,10 @@ statement
     statement
     statement
   end
+  begin
+    begin
+      statement
+  end-end
   END
 statement
 

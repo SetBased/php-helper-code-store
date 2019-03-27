@@ -47,6 +47,9 @@ class ConcreteCodeStore extends CodeStore
       case 'MIDDLE':
         return self::C_INDENT_INCREMENT_BEFORE | self::C_INDENT_DECREMENT_AFTER;
 
+      case 'end-end':
+        return self::C_INDENT_DECREMENT_BEFORE_DOUBLE;
+
       default:
         return 0;
     }
