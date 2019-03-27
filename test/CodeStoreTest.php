@@ -12,11 +12,11 @@ class CodeStoreTest extends TestCase
   //--------------------------------------------------------------------------------------------------------------------
   /**
    * Test for illegal argument.
-   *
-   * @expectedException \InvalidArgumentException
    */
-  public function testAppendObject()
+  public function testAppendObject(): void
   {
+    $this->expectException(\InvalidArgumentException::class);
+
     $store = new ConcreteCodeStore();
     $store->append('begin');
     $store->append($this);
@@ -27,7 +27,7 @@ class CodeStoreTest extends TestCase
   /**
    * Test append additional code to the last line.
    */
-  public function testAppendToLastLine()
+  public function testAppendToLastLine(): void
   {
     $store = new ConcreteCodeStore();
     $store->append('begin');
@@ -50,7 +50,7 @@ EOL;
   /**
    * Test for clearing the code store.
    */
-  public function testClear()
+  public function testClear(): void
   {
     $store = new ConcreteCodeStore();
 
@@ -86,7 +86,7 @@ EOL;
   /**
    * Test empty code store returns empty string.
    */
-  public function testEmpty()
+  public function testEmpty(): void
   {
     $store = new ConcreteCodeStore();
     $code  = $store->getCode();
@@ -97,7 +97,7 @@ EOL;
   /**
    * Test for get raw code.
    */
-  public function testGetLines()
+  public function testGetLines(): void
   {
     $store = new ConcreteCodeStore();
 
@@ -116,7 +116,7 @@ EOL;
   /**
    * Test indentation levels and null values with array.
    */
-  public function testIndentationLevels1()
+  public function testIndentationLevels1(): void
   {
     $lines = ['statement',
               'BEGIN',
@@ -175,7 +175,7 @@ EOL;
   /**
    * Test indentation levels and null values with single lines.
    */
-  public function testIndentationLevels2()
+  public function testIndentationLevels2(): void
   {
     $lines = ['statement',
               'BEGIN',
@@ -238,7 +238,7 @@ EOL;
   /**
    * Test for separator.
    */
-  public function testSeparator()
+  public function testSeparator(): void
   {
     $store = new ConcreteCodeStore();
 
@@ -269,7 +269,7 @@ EOL;
   /**
    * Test trimming and not trimming whitespace.
    */
-  public function testTrim()
+  public function testTrim(): void
   {
     $store = new ConcreteCodeStore();
     $store->append('begin');
@@ -294,7 +294,7 @@ EOL;
   /**
    * Test getLastLine.
    */
-  public function testGetLastLine1()
+  public function testGetLastLine1(): void
   {
     $store = new ConcreteCodeStore();
     $store->append('begin');
@@ -307,11 +307,11 @@ EOL;
   //--------------------------------------------------------------------------------------------------------------------
   /**
    * Test getLastLine with empty code store.
-   *
-   * @expectedException \LogicException
    */
-  public function testGetLastLine2()
+  public function testGetLastLine2(): void
   {
+    $this->expectException(\LogicException::class);
+
     $store = new ConcreteCodeStore();
     $store->getLastLine();
   }
