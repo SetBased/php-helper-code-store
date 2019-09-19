@@ -50,6 +50,14 @@ abstract class CodeStore
   const C_INDENT_DECREMENT_AFTER = 8;
 
   /**
+   * No indentation, heredoc.
+   *
+   * @since 1.0.0
+   * @api
+   */
+  const C_INDENT_HEREDOC = 32;
+
+  /**
    * String for separating parts of the generated code. In most cases a comment with one character repeated many times.
    *
    * @var string
@@ -206,8 +214,15 @@ abstract class CodeStore
         $line = $this->shortenSeparator($this->width - $this->indentation * $indentLevel);
       }
 
-      // Append the line with indentation.
-      $lines[] = $this->addIndentation($line, $indentLevel);
+      if ($mode & self::C_INDENT_HEREDOC)
+      {
+        $lines[] = $line;
+      }
+      else
+      {
+        // Append the line with indentation.
+        $lines[] = $this->addIndentation($line, $indentLevel);
+      }
 
       // Increment or decrement indentation level.
       if ($mode & self::C_INDENT_INCREMENT_AFTER)

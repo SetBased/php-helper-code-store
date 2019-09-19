@@ -12,15 +12,23 @@ class ConcreteCodeStore extends CodeStore
 {
   //--------------------------------------------------------------------------------------------------------------------
   /**
+   * If true the current lines are part of a heredoc.
+   *
+   * @var bool
+   */
+  private $isHeredoc = false;
+
+  //--------------------------------------------------------------------------------------------------------------------
+  /**
    * {@inheritdoc}
    */
-  public function __construct(int $indentation=2, int $width=15)
+  public function __construct(int $indentation = 2, int $width = 15)
   {
     parent::__construct($indentation, $width);
-    
+
     $this->separator = '#'.str_repeat('-', $width - 1);
   }
-  
+
   //--------------------------------------------------------------------------------------------------------------------
   /**
    * {@inheritdoc}
@@ -50,11 +58,21 @@ class ConcreteCodeStore extends CodeStore
       case 'end-end':
         return self::C_INDENT_DECREMENT_BEFORE_DOUBLE;
 
-      default:
+      case 'heredoc-start':
+        $this->isHeredoc = true;
+
         return 0;
+
+      case 'heredoc-end':
+        $this->isHeredoc = false;
+
+        return self::C_INDENT_HEREDOC;
+
+      default:
+        return ($this->isHeredoc===false) ? 0 : self::C_INDENT_HEREDOC;
     }
   }
-  
+
   //--------------------------------------------------------------------------------------------------------------------
 }
 

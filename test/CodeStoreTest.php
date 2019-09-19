@@ -136,6 +136,11 @@ EOL;
               'statement',
               'middle',
               'statement',
+              'heredoc-start',
+              'line1',
+              'line2',
+              'line3',
+              'heredoc-end',
               'statement',
               'end',
               'begin',
@@ -162,6 +167,11 @@ statement
     statement
   middle
     statement
+    heredoc-start
+line1
+line2
+line3
+heredoc-end
     statement
   end
   begin
