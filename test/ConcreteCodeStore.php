@@ -16,7 +16,7 @@ class ConcreteCodeStore extends CodeStore
    *
    * @var bool
    */
-  private $isHeredoc = false;
+  private bool $isHeredoc = false;
 
   //--------------------------------------------------------------------------------------------------------------------
   /**

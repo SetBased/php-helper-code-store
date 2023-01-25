@@ -60,33 +60,33 @@ abstract class CodeStore
   /**
    * String for separating parts of the generated code. In most cases a comment with one character repeated many times.
    *
-   * @var string
+   * @var string|null
    *
    * @since 1.0.0
    * @api
    */
-  protected $separator;
+  protected ?string $separator = null;
 
   /**
    * The number of spaces per indentation level.
    *
    * @var int
    */
-  private $indentation;
+  private int $indentation;
 
   /**
    * The source code. Each element is a line.
    *
    * @var string[]
    */
-  private $lines;
+  private array $lines;
 
   /**
    * The maximum width of the generated code (in chars).
    *
    * @var int
    */
-  private $width;
+  private int $width;
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
