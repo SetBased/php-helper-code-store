@@ -15,7 +15,7 @@ abstract class CodeStore
    * @since 1.0.0
    * @api
    */
-  const C_INDENT_INCREMENT_BEFORE = 1;
+  const int C_INDENT_INCREMENT_BEFORE = 1;
 
   /**
    * Increment indentation after appending the line.
@@ -23,7 +23,7 @@ abstract class CodeStore
    * @since 1.0.0
    * @api
    */
-  const C_INDENT_INCREMENT_AFTER = 2;
+  const int C_INDENT_INCREMENT_AFTER = 2;
 
   /**
    * Decrement indentation before appending the line.
@@ -31,7 +31,7 @@ abstract class CodeStore
    * @since 1.0.0
    * @api
    */
-  const C_INDENT_DECREMENT_BEFORE = 4;
+  const int C_INDENT_DECREMENT_BEFORE = 4;
 
   /**
    * Decrement indentation twice before appending the line.
@@ -39,7 +39,7 @@ abstract class CodeStore
    * @since 2.1.0
    * @api
    */
-  const C_INDENT_DECREMENT_BEFORE_DOUBLE = 16;
+  const int C_INDENT_DECREMENT_BEFORE_DOUBLE = 16;
 
   /**
    * Decrement indentation after appending the line.
@@ -47,7 +47,7 @@ abstract class CodeStore
    * @since 1.0.0
    * @api
    */
-  const C_INDENT_DECREMENT_AFTER = 8;
+  const int C_INDENT_DECREMENT_AFTER = 8;
 
   /**
    * No indentation, heredoc.
@@ -55,7 +55,7 @@ abstract class CodeStore
    * @since 1.0.0
    * @api
    */
-  const C_INDENT_HEREDOC = 32;
+  const int C_INDENT_HEREDOC = 32;
 
   /**
    * String for separating parts of the generated code. In most cases a comment with one character repeated many times.
@@ -117,7 +117,7 @@ abstract class CodeStore
    * @since 1.0.0
    * @api
    */
-  public function append($line, bool $trim = true): void
+  public function append(mixed $line, bool $trim = true): void
   {
     switch (true)
     {
@@ -326,7 +326,7 @@ abstract class CodeStore
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
-   * Appends a line of code this this code.
+   * Appends a line of code to this code.
    *
    * @param null|string $line The line of code to append. If null the line will be ignored.
    * @param bool        $trim If true the line of code will be trimmed before appending.
@@ -342,7 +342,7 @@ abstract class CodeStore
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
-   * Appends an array with lines of code this this code.
+   * Appends an array with lines of code to this code.
    *
    * @param string[] $lines The lines of code to append.
    * @param bool     $trim  If true the lines of code will be trimmed before appending.
